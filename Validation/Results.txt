@@ -1,0 +1,82 @@
+Orbit Lite 1.2 — Palm Dock validation
+Verified: 2026-10-23 +04
+Version 1.2, build 3. Bundle ID com.khayalius.OrbitLite.
+Xcode 27.1 (27A9275), visionOS 27.0 SDK and simulator. Deployment target visionOS 2.0.
+Automatic signing: Personal Team 2359A9S4Q4.
+
+Delivered behavior
+Compact glass capsule expands upward into a four-control dock and inspectors.
+Color accent follows the sculpture. Native glass, hover feedback, spring transitions,
+and Reduce Motion behavior. Existing sculpture gestures, forms, finishes, and Reset remain.
+Attach to left palm opens a mixed immersive scene with a native RealityKit left aboveHand
+anchor and a small local offset. No skeleton data is read or stored; no custom hand recognizer
+or raw hand-tracking permission is used. System hand menus remain available.
+Float toolbar is available in the expanded dock and separately below the sculpture.
+
+Final verification
+20 scene, geometry, animation-isolation, lifecycle, and anchor-layout tests passed.
+2 native simulator UI tests passed. Total: 22 tests, no failures in the final run.
+Final test log: work/palm-tests-2.log
+Result bundle: work/PalmDockTests-2.xcresult
+Physical Vision Pro Release compilation: BUILD SUCCEEDED with CODE_SIGNING_ALLOWED=NO.
+Hardware build log: work/palm-device-final.log
+This is an unsigned compilation, not a physical installation or physical test.
+
+UI coverage
+Collapsed and expanded the floating dock; opened the mixed-space stationary preview;
+expanded that dock; changed form, color, and finish; collapsed it; returned to floating;
+verified the same sculpture appearance. Also tested every existing inspector, Orbit/Pause,
+the gesture guide, and Reset.
+
+Local capture verification (media is not included in this GitHub repository)
+A separate native UI capture run passed using app sources identical to the delivered app.
+Simulator.png: floating dock with the initial Saturn.
+PalmCollapsed.png: collapsed capsule in the stationary preview.
+PalmExpanded.png: expanded preview dock.
+Style.png: expanded style inspector with Atom, Chrome, and Iris.
+PalmDock.mp4: actual composited simulator recording of expand, Style, and collapse.
+These images were visually inspected. No hand is depicted or simulated in the layout preview.
+
+Limits and manual checks
+Native AnchorEntity previews did not resolve visibly in this simulator session. The simulator
+therefore uses an explicitly labeled stationary Entity preview. Hardware uses the real left-hand
+aboveHand anchor; it does not use a head-locked or stationary fallback.
+No physical Vision Pro is currently connected. Hand following, comfort, tracking loss/recovery,
+physical eye/pinch delivery, and possible overlap with the Home indicator still require the headset.
+Pairing, Developer Mode, device registration, and provisioning remain manual steps.
+Automated targeting of the sculpture itself previously failed with an invalid accessibility
+activation transform. State tests verify the gesture operations, not physical delivery.
+
+Diagnostics
+RealityRenderer test initialization emits simulator shader pipeline diagnostics; all final tests pass.
+Xcode reports skipped App Intents metadata extraction because this app does not use App Intents.
+Earlier native-anchor preview tests failed; the final stationary preview path passes. Those
+intermediate builds and probes are kept in work/, not in the delivered application.
+
+Final test evidence
+✔ Test transitionsPreventDuplicateOpenAndCloseRequests() passed after 0.014 seconds.
+✔ Test initialSceneAndOrbitalResourcesLoad() passed after 0.014 seconds.
+✔ Test paletteCyclesAndWraps() passed after 0.030 seconds.
+✔ Test canceledOrFailedOpeningCanBeRetried() passed after 0.030 seconds.
+✔ Test doublePinchCommandCyclesForms() passed after 0.015 seconds.
+✔ Test anchorUsesLeftPalmAndKeepsExpansionAboveTheHandle() passed after 0.020 seconds.
+✔ Test finishesChangeMaterialWithoutLosingColor() passed after 0.015 seconds.
+✔ Test dragUsesItsStartingPositionAndSuppressesTapCommands() passed after 0.015 seconds.
+✔ Test twoHandStretchIsRelativeAndClamped() passed after 0.016 seconds.
+✔ Test twoHandTwistUsesTheGestureOrigin() passed after 0.017 seconds.
+✔ Test simultaneousMoveStretchAndTwistPreserveEachOther() passed after 0.016 seconds.
+✔ Test ringBoundsStayInsideVolumeAtEverySize() passed after 0.001 seconds.
+✔ Test resizingReclampsAnObjectNearTheVolumeEdge() passed after 0.017 seconds.
+✔ Test cancellationReleasesAllGestureOrigins() passed after 0.014 seconds.
+✔ Test reducedMotionDisablesOrbitalPlayback() passed after 0.017 seconds.
+✔ Test stylingAndTransformUpdatesPreserveChildAnimation() passed after 0.191 seconds.
+✔ Test resetRestoresEveryStudioSettingAndPose() passed after 0.325 seconds.
+✔ Test invalidGestureValuesCannotCorruptThePose() passed after 0.017 seconds.
+✔ Test resetCancelsAnInFlightColorAnimation() passed after 0.465 seconds.
+✔ Test proceduralRingsHaveValidOutwardFacingTriangles() passed after 0.003 seconds.
+✔ Test run with 20 tests in 2 suites passed after 1.197 seconds.
+Test Case '-[StudioUITests.StudioUITests testPalmDockExpansionAndReturnPreserveSculpture]' passed (22.176 seconds).
+Test Case '-[StudioUITests.StudioUITests testToolbarAndStudioPanels]' passed (21.892 seconds).
+** TEST SUCCEEDED **
+
+No App Store publication. Previous versions remain in OrbitLite-v1.zip and OrbitLite-v1.1.zip.

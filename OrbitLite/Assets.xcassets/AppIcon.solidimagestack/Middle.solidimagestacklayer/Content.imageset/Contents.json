@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "scale" : "2x",
+      "filename" : "Middle.png",
+      "idiom" : "vision"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

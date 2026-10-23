@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "scale" : "2x",
+      "filename" : "Front.png",
+      "idiom" : "vision"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

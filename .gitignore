@@ -1,0 +1,26 @@
+# macOS and personal Xcode state
+.DS_Store
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+*.xccheckout
+*.xcscmblueprint
+
+# Local build and test output
+DerivedData/
+build/
+*.xcresult
+*.xcarchive
+*.ipa
+
+# Credentials and signing exports
+.env
+.env.*
+*.p12
+*.p8
+*.cer
+*.mobileprovision
+
+# Large local simulator captures (the build does not need these)
+Validation/*.png
+Validation/*.mp4
