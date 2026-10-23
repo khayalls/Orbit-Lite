@@ -25,7 +25,9 @@ xcodebuild -project "$orbit_root/OrbitLite.xcodeproj" -scheme OrbitLite \
 xcrun simctl boot "$orbit_device" >/dev/null 2>&1 || true
 xcrun simctl bootstatus "$orbit_device" -b
 xcrun simctl install "$orbit_device" "$orbit_root/DerivedData/Build/Products/Debug-xrsimulator/OrbitLite.app"
-xcrun simctl launch "$orbit_device" com.khayalius.OrbitLite
+orbit_app="$orbit_root/DerivedData/Build/Products/Debug-xrsimulator/OrbitLite.app"
+orbit_bundle_id="$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$orbit_app/Info.plist")"
+xcrun simctl launch "$orbit_device" "$orbit_bundle_id"
 orbit_developer_dir="$(xcode-select -p)"
 if [[ -d "$orbit_developer_dir/../Applications/DeviceHub.app" ]]; then
     open -a "$orbit_developer_dir/../Applications/DeviceHub.app"

@@ -1,8 +1,8 @@
 Orbit Lite 1.2 — Palm Dock validation
 Verified: 2026-10-23 +04
-Version 1.2, build 3. Bundle ID com.khayalius.OrbitLite.
+Version 1.2, build 3. Public default bundle ID: com.example.OrbitLite.
 Xcode 27.1 (27A9275), visionOS 27.0 SDK and simulator. Deployment target visionOS 2.0.
-Automatic signing: Personal Team 2359A9S4Q4.
+Device signing uses an ignored local configuration; no personal development team is committed.
 
 Delivered behavior
 Compact glass capsule expands upward into a four-control dock and inspectors.
@@ -80,3 +80,10 @@ Test Case '-[StudioUITests.StudioUITests testToolbarAndStudioPanels]' passed (21
 ** TEST SUCCEEDED **
 
 No App Store publication. Previous versions remain in OrbitLite-v1.zip and OrbitLite-v1.1.zip.
+
+Public configuration verification — 2026-10-23
+A clean public source snapshot without LocalSigning.xcconfig built and passed all 22 tests.
+Its app uses the generic public bundle identifier and no personal development team.
+The original Mac's ignored configuration preserves its prior app identity.
+The local physical-device Release compilation also succeeded with signing disabled.
+No physical-headset test is implied by either build.

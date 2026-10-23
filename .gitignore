@@ -24,3 +24,6 @@ build/
 # Large local simulator captures (the build does not need these)
 Validation/*.png
 Validation/*.mp4
+
+# This Mac's signing team and bundle identifier
+Configuration/LocalSigning.xcconfig

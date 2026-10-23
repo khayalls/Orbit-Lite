@@ -1,0 +1,4 @@
+// Public defaults. Device signing can be configured locally without committing it.
+DEVELOPMENT_TEAM =
+ORBIT_BUNDLE_IDENTIFIER = com.example.OrbitLite
+#include? "LocalSigning.xcconfig"

@@ -12,9 +12,17 @@ GitHub stores the source and version history. The native app runs through Xcode 
 
 ## Open and run
 
-Open **OrbitLite.xcodeproj**, choose the **OrbitLite** scheme, select your headset or an Apple Vision Pro simulator, and click **Run**. Running again installs this expanded version over the earlier Orbit Lite app.
+Open **OrbitLite.xcodeproj**, choose the **OrbitLite** scheme, select your headset or an Apple Vision Pro simulator, and click **Run**. The original Mac retains its existing app identity through its ignored local configuration; a fresh checkout uses the public default until you configure a unique identifier.
 
 The scene starts with an Azure Saturn in the Pearl finish, with motion paused.
+
+## Local signing settings
+
+The public project defaults to `com.example.OrbitLite` with no development team selected. Simulator builds work without a team.
+
+For a physical device, copy `Configuration/LocalSigning.xcconfig.example` to `Configuration/LocalSigning.xcconfig`, fill in your own Team ID and unique bundle identifier, and keep automatic signing enabled. The local file is ignored by Git and omitted from the downloadable archive. The original Mac already has its settings in that file, so its existing app identity is preserved.
+
+Do not commit signing certificates, private keys, provisioning profiles, Apple Account details, or the local signing file. The repository intentionally links to its public GitHub owner; that username and GitHub's no-reply commit attribution remain public.
 
 ## Hand gestures
 
@@ -70,7 +78,7 @@ From this folder, `./Scripts/run-simulator.sh` builds and launches the newest in
 2. On Vision Pro, open **Settings > General > Remote Devices** and leave it open.
 3. On the Mac, open **Xcode > Open Developer Tool > Device Hub**. Choose **+ > Pair Nearby Device > Apple Vision Pro**. Select the headset, enter its PIN on your Mac, and accept Trust on the headset if prompted.
 4. On Vision Pro, enable **Settings > Privacy & Security > Developer Mode**. Restart and confirm the prompt afterward. This setting may appear only after pairing begins.
-5. In Xcode, select the **OrbitLite target > Signing & Capabilities**. Keep **Automatically manage signing** enabled and **Khayal Mammadaliyev (Personal Team)** selected. The bundle identifier remains `com.khayalius.OrbitLite`.
+5. In Xcode, select the **OrbitLite target > Signing & Capabilities**. Keep **Automatically manage signing** enabled. Configure your own development team and unique bundle identifier through the ignored local configuration described above.
 6. Choose the physical headset in the run destination menu and click **Run**. Keep it awake and unlocked while Xcode registers it, creates its profile, and installs the app. Complete Apple Account, passcode, or signing-key permission prompts yourself if requested.
 
 References: [Apple pairing guide](https://developer.apple.com/documentation/xcode/managing-your-simulated-and-physical-devices-in-device-hub), [Developer Mode](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device), [signing and deployment](https://developer.apple.com/documentation/xcode/running-your-app-on-simulated-or-physical-devices).
@@ -107,7 +115,7 @@ References: [Apple pairing guide](https://developer.apple.com/documentation/xcod
 
 ## Validation and limits
 
-Xcode 27.1, visionOS 27.0 SDK, deployment target visionOS 2.0. Automatic signing still uses the Personal Team. No physical headset was detected during this update.
+Xcode 27.1, visionOS 27.0 SDK, deployment target visionOS 2.0. Personal signing settings are kept in an ignored local configuration. No physical headset was detected during this update.
 
 The scene tests exercise simultaneous transforms, gesture-origin cleanup, bounds at every size, material changes, palette/form cycles, invalid inputs, Reset, and ring triangle winding. The two native UI tests operate Style, form/color/finish controls, Orbit/Pause, the gesture guide, Reset, dock expansion, the mixed-space preview, and returning to floating mode with the same appearance.
 

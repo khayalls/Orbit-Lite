@@ -39,7 +39,7 @@ final class OrbitScene {
     @ObservationIgnored private var playback: AnimationPlaybackController?
     @ObservationIgnored private var isSceneActive = true
     @ObservationIgnored private var reducesMotion = false
-    @ObservationIgnored private let logger = Logger(subsystem: "com.khayalius.OrbitLite", category: "Interaction")
+    @ObservationIgnored private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "OrbitLite", category: "Interaction")
 
     init() {
         root.name = "OrbitRoot"

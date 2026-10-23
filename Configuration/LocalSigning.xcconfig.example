@@ -1,0 +1,3 @@
+// Copy to LocalSigning.xcconfig and fill in your own development settings.
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+ORBIT_BUNDLE_IDENTIFIER = com.example.yourname.OrbitLite
